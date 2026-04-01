@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Model Canvas - Tyran AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        :root {
+            --bg-color: #f1f5f9;
+            --text-main: #1e293b;
+            --text-muted: #334155;
+            --border-color: #cbd5e1;
+            --accent-color: #0f172a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.2rem;
+            color: var(--text-main);
+            letter-spacing: -0.02em;
+        }
+
+        header p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* CSS Grid for the 9-block Canvas */
+        .canvas-container {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(2, minmax(300px, auto)) auto;
+            gap: 16px;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .card {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            
+            /* Makes the boxes manually resizable by the user */
+            resize: both;
+            overflow: auto;
+            min-height: 200px; /* Prevents boxes from being sized too small */
+            min-width: 150px;
+        }
+
+        /* Custom Scrollbar for resized boxes */
+        .card::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .card::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        .card h2 {
+            font-size: 1.1rem;
+            margin: 0 0 16px 0;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .card ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .card li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+
+        .card li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--text-main);
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1;
+            top: 0px;
+        }
+
+        .card li strong {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        /* Minimal Color Palette & Grid Placement */
+        .kp { grid-column: span 2; grid-row: span 2; background-color: #eff6ff; } /* Light Blue */
+        .ka { grid-column: span 2; grid-row: span 1; background-color: #ecfeff; } /* Light Cyan */
+        .kr { grid-column: span 2; grid-row: span 1; background-color: #f0fdf4; } /* Light Green */
+        .vp { grid-column: span 2; grid-row: span 2; background-color: #f5f3ff; } /* Light Violet */
+        .cr { grid-column: span 2; grid-row: span 1; background-color: #fff1f2; } /* Light Rose */
+        .ch { grid-column: span 2; grid-row: span 1; background-color: #fff7ed; } /* Light Orange */
+        .cs { grid-column: span 2; grid-row: span 2; background-color: #fdf4ff; } /* Light Fuchsia */
+        .cost { grid-column: span 5; grid-row: 3; background-color: #f8fafc; }   /* Light Slate */
+        .rev { grid-column: span 5; grid-row: 3; background-color: #fefce8; }    /* Light Yellow */
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .canvas-container {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: auto;
+            }
+            .kp, .ka, .kr, .vp, .cr, .ch, .cs, .cost, .rev {
+                grid-column: span 1;
+                grid-row: auto;
+            }
+            .cost, .rev {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .canvas-container {
+                grid-template-columns: 1fr;
+            }
+            .cost, .rev {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Business Model Canvas</h1>
+        <p>Tyran AI - Agentic AI Job Search Platform</p>
+    </header>
+
+    <div class="canvas-container">
+        
+        <div class="card kp">
+            <h2>Key Partners</h2>
+            <ul>
+                <li>NTU / NUS / IIT career offices and startup incubators</li>
+                <li>Job board partners (LinkedIn, Indeed, Glassdoor, Internshala) for data integrations</li>
+                <li>Cloud providers (AWS / GCP) for scalable infrastructure</li>
+                <li>LLM API providers (OpenAI, Anthropic Claude) for AI agent capabilities</li>
+                <li>Campus ambassadors as distributed sales force</li>
+            </ul>
+        </div>
+
+        <div class="card ka">
+            <h2>Key Activities</h2>
+            <ul>
+                <li>Developing and maintaining the agentic AI engine and referral scout</li>
+                <li>Continuous ML model training and personalisation</li>
+                <li>Building and scaling platform integrations with job boards</li>
+                <li>User acquisition through university partnerships and content marketing</li>
+                <li>Security and compliance (PDPA, GDPR)</li>
+                <li>Customer support and community building</li>
+            </ul>
+        </div>
+
+        <div class="card vp">
+            <h2>Value Propositions</h2>
+            <ul>
+                <li><strong>For Job Seekers:</strong> End-to-end job search automation — apply to jobs 80% faster, track all applications, scout referrals, assess career risks, and upskill — all in one platform.</li>
+                <li><strong>For Recruiters:</strong> Access to a pre-screened, AI-matched candidate pipeline with verified skills and application intent.</li>
+            </ul>
+        </div>
+
+        <div class="card cr">
+            <h2>Customer Relationships</h2>
+            <ul>
+                <li>Self-serve freemium onboarding</li>
+                <li>AI chatbot for in-app support</li>
+                <li>Weekly personalised career insights via email</li>
+                <li>Community forums and peer support</li>
+                <li>White-glove onboarding for B2B enterprise clients</li>
+            </ul>
+        </div>
+
+        <div class="card cs">
+            <h2>Customer Segments</h2>
+            <ul>
+                <li><strong>Primary:</strong> University students and fresh graduates (18–25) in Singapore, India, Malaysia seeking internships and full-time roles</li>
+                <li><strong>Secondary:</strong> Young professionals (25–30) seeking career mobility</li>
+                <li><strong>Tertiary:</strong> Recruiters, HR professionals, and freelance hiring managers seeking AI-matched talent</li>
+            </ul>
+        </div>
+
+        <div class="card kr">
+            <h2>Key Resources</h2>
+            <ul>
+                <li>Proprietary AI technology and codebase</li>
+                <li>Data assets: job listings, user behaviour, application outcomes</li>
+                <li>Founding team's AI and business expertise</li>
+                <li>University partnerships and community</li>
+                <li>Brand and reputation in the career-tech space</li>
+            </ul>
+        </div>
+
+        <div class="card ch">
+            <h2>Channels</h2>
+            <ul>
+                <li>Web application (primary) & Mobile companion app</li>
+                <li>University career portals and workshops</li>
+                <li>App stores (Google Play, Apple App Store)</li>
+                <li>LinkedIn / Instagram / TikTok content marketing</li>
+                <li>Campus ambassador word-of-mouth</li>
+            </ul>
+        </div>
+
+        <div class="card cost">
+            <h2>Cost Structure</h2>
+            <ul>
+                <li>Engineering and AI development salaries (largest cost)</li>
+                <li>Cloud compute and LLM API costs (variable, scales with usage)</li>
+                <li>Marketing and user acquisition (campus events, content, ambassador stipends)</li>
+                <li>Legal and compliance costs</li>
+                <li>Infrastructure (servers, security, monitoring)</li>
+            </ul>
+        </div>
+
+        <div class="card rev">
+            <h2>Revenue Streams</h2>
+            <ul>
+                <li><strong>Freemium SaaS Model:</strong> Basic free tier for user acquisition</li>
+                <li><strong>Pro Subscription ($9.99/mo):</strong> Unlimited applications and advanced analytics</li>
+                <li><strong>Premium Subscription ($19.99/mo):</strong> Referral scouting and priority AI processing</li>
+                <li><strong>B2B Potential:</strong> Talent pipeline access fees for recruiters (Future scaling)</li>
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+</html>
